@@ -4,8 +4,33 @@
 To develop an LSTM-based model for recognizing the named entities in the text.
 
 ## Problem Statement and Dataset
+
+Problem Statement:
+
+The objective is to develop a Deep Learning model that can automatically identify and classify Named Entities (such as names of people, locations, organizations, etc.) within a given sentence. By using a Bidirectional LSTM (BiLSTM), the model learns to understand the context of a word based on both the words that come before it and the words that come after it.
+
 <img width="336" height="381" alt="image" src="https://github.com/user-attachments/assets/41d4dbdd-c2a3-4929-85b9-d33cd0572a2c" />
 
+## Theory
+1. Named Entity Recognition (NER)
+NER is a Natural Language Processing (NLP) task. It involves processing a sentence and labeling each word with a specific category (e.g., B-per for a person's name, B-geo for a location). If a word doesn't belong to a category, it is usually labeled as 'O' (Other).
+
+2. Bidirectional LSTM (BiLSTM)
+A standard LSTM processes text from left to right. A Bidirectional LSTM processes the sentence in two directions:
+
+    Forward: To understand the context from the start of the sentence.
+    
+    Backward: To understand the context from the end of the sentence.
+    This allows the model to have a "full view" of the sentence, which is essential for correctly identifying entities.
+
+3. Embedding Layer
+Since computers cannot understand text directly, we use an Embedding Layer. This converts each unique word into a dense vector (a list of numbers) that represents its meaning. Words with similar meanings or usages will have similar vectors.
+
+4. Padding
+Sentences in a dataset have different lengths. However, neural networks require inputs to be the same size. Padding adds special "empty" tokens (like zeros) to shorter sentences so that every input in a batch has a uniform length.
+
+5. Cross-Entropy Loss
+In NER, we are trying to classify each word into one of many tag categories. We use Cross-Entropy Loss to measure how well the predicted tags match the actual tags. The training process adjusts the model to minimize this loss.
 
 ## DESIGN STEPS
 
